@@ -1,46 +1,33 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: "Mona Sans", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --color-dark-200: #475467;
+  --color-light-blue-100: #c1d3f81a;
+  --color-light-blue-200: #a7bff14d;
 
-  /* Primary brand colors */
-  --color-primary-100: #e0e7ff;
-  --color-primary-200: #c7d2fe;
-  --color-primary-500: #6366f1;
-  --color-primary-700: #4f46e5;
+  --color-badge-green: #d5faf1;
+  --color-badge-red: #f9e3e2;
+  --color-badge-yellow: #fceed8;
 
-  /* Dark theme shades */
-  --color-dark-100: #d1d5db;
-  --color-dark-200: #9ca3af;
-  --color-dark-800: #1f2937;
-
-  /* Light theme background */
-  --color-light-50: #f9fafb;
-  --color-light-100: #f3f4f6;
-
-  /* Badge colors */
-  --color-badge-green: #dcfce7;
-  --color-badge-red: #fee2e2;
-  --color-badge-yellow: #fef9c3;
-
-  --color-badge-green-text: #166534;
-  --color-badge-red-text: #7f1d1d;
-  --color-badge-yellow-text: #92400e;
+  --color-badge-green-text: #254d4a;
+  --color-badge-red-text: #752522;
+  --color-badge-yellow-text: #73321b;
 }
 
 html,
 body {
-  @apply bg-light-50 dark:bg-dark-800 text-gray-900 dark:text-gray-100;
+  @apply bg-white;
 }
 
 main {
   @apply min-h-screen pt-10;
 }
-
 h1 {
-  @apply max-sm:text-[3rem] text-6xl text-gradient leading-tight xl:tracking-[-2px] font-semibold;
+  @apply max-sm:text-[3rem] text-6xl  text-gradient leading-tight xl:tracking-[-2px] font-semibold;
 }
 
 h2 {
@@ -50,9 +37,12 @@ h2 {
 label {
   @apply text-dark-200;
 }
+input {
+  @apply w-full p-4 inset-shadow rounded-2xl focus:outline-none bg-white;
+}
 
-input, textarea {
-  @apply w-full p-4 inset-shadow rounded-2xl focus:outline-none bg-white dark:bg-dark-800 text-gray-900 dark:text-gray-100;
+textarea {
+  @apply w-full p-4 inset-shadow rounded-2xl focus:outline-none bg-white;
 }
 
 form {
@@ -61,50 +51,41 @@ form {
 
 @layer components {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#8f9eff] via-[#4b4b4b] to-[#c1d0ff];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-[#000000] to-[#8E97C5];
   }
-
   .gradient-border {
-    @apply bg-gradient-to-b from-primary-100 to-primary-200 p-4 rounded-2xl;
+    @apply bg-gradient-to-b from-light-blue-100 to-light-blue-200 p-4 rounded-2xl;
   }
-
   .primary-button {
     @apply primary-gradient text-white rounded-full px-4 py-2 cursor-pointer w-full;
   }
-
   .resume-nav {
-    @apply flex flex-row justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700;
+    @apply flex flex-row justify-between items-center p-4 border-b border-gray-200;
   }
-
   .resume-summary {
     @apply flex flex-row items-center justify-center p-4 gap-4;
     .category {
-      @apply flex flex-row gap-2 items-center bg-light-100 dark:bg-dark-800 rounded-2xl p-4 w-full justify-between;
+      @apply flex flex-row gap-2 items-center bg-gray-50 rounded-2xl p-4 w-full justify-between;
     }
   }
-
   .back-button {
-    @apply flex flex-row items-center gap-2 border border-gray-200 dark:border-gray-600 rounded-lg p-2 shadow-sm;
+    @apply flex flex-row items-center gap-2 border border-gray-200 rounded-lg p-2 shadow-sm;
   }
-
   .auth-button {
     @apply primary-gradient rounded-full py-4 px-8 cursor-pointer w-[600px] max-md:w-full text-3xl font-semibold text-white;
   }
-
   .main-section {
     @apply flex flex-col items-center gap-8 pt-12 max-sm:mx-2 mx-15 pb-5;
   }
-
   .page-heading {
     @apply flex flex-col items-center gap-8 max-w-4xl text-center max-sm:gap-4;
   }
-
   .resumes-section {
     @apply flex flex-wrap max-md:flex-col max-md:gap-4 gap-6 items-start max-md:items-center w-full max-w-[1850px] justify-evenly;
   }
 
   .resume-card {
-    @apply flex flex-col gap-8 h-[560px] w-[350px] lg:w-[430px] xl:w-[490px] bg-white dark:bg-dark-800 rounded-2xl p-4;
+    @apply flex flex-col gap-8 h-[560px] w-[350px] lg:w-[430px] xl:w-[490px] bg-white rounded-2xl p-4 m-5;
   }
 
   .resume-card-header {
@@ -116,7 +97,7 @@ form {
   }
 
   .navbar {
-    @apply flex flex-row justify-between items-center bg-white dark:bg-dark-800 rounded-full p-4 w-full px-10 max-w-[1200px] mx-auto;
+    @apply flex flex-row justify-between items-center bg-white rounded-full p-4 w-full px-10 max-w-[1200px] mx-auto;
   }
 
   .score-badge {
@@ -128,37 +109,36 @@ form {
   }
 
   .uplader-drag-area {
-    @apply relative p-8 text-center transition-all duration-700 cursor-pointer bg-white dark:bg-dark-800 rounded-2xl min-h-[208px];
+    @apply relative p-8 text-center transition-all duration-700 cursor-pointer bg-white rounded-2xl min-h-[208px];
   }
-
   .uploader-selected-file {
-    @apply flex items-center justify-between p-3 bg-light-100 dark:bg-dark-800 rounded-2xl;
+    @apply flex items-center justify-between p-3 bg-gray-50 rounded-2xl;
   }
 }
 
 @utility bg-gradient {
-  background: linear-gradient(to bottom, #edf2ff 60%, #e0e7ff);
+  background: linear-gradient(to bottom, #f0f4ff 60%, #fa7185cc);
 }
 
 @utility text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#8f9eff] via-[#4b4b4b] to-[#c1d0ff];
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-[#000000] to-[#8E97C5];
 }
 
 @utility gradient-hover {
-  @apply bg-gradient-to-b from-primary-100 to-primary-200;
+  @apply bg-gradient-to-b from-light-blue-100 to-light-blue-200;
 }
 
 @utility primary-gradient {
-  background: linear-gradient(to bottom, #8b5cf6, #6366f1);
-  box-shadow: 0px 74px 21px 0px #6366f100;
+  background: linear-gradient(to bottom, #8e98ff, #606beb);
+  box-shadow: 0px 74px 21px 0px #6678ef00;
 }
 
 @utility primary-gradient-hover {
-  background: linear-gradient(to bottom, #7c3aed, #4f46e5);
+  background: linear-gradient(to bottom, #717dff, #4957eb);
 }
 
 @utility inset-shadow {
-  box-shadow: inset 0 0 12px 0 rgba(99, 102, 241, 0.2);
+  box-shadow: inset 0 0 12px 0 rgba(36, 99, 235, 0.2);
   backdrop-filter: blur(10px);
 }
 
