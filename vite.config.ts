@@ -5,4 +5,10 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
+  server: {
+    // Handle Chrome DevTools requests gracefully
+    fs: {
+      allow: ['..']
+    }
+  }
 });
